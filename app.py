@@ -18,7 +18,7 @@ MODEL = "gemini-3-flash-preview"
 
 def get_client():
     """Read API key fresh every request — fixes stale key issues on Render."""
-    
+    api_key = os.environ.get("GEMINI_API_KEY", "")
     if not api_key:
         raise ValueError("GEMINI_API_KEY is not set in environment variables")
     return genai.Client(api_key=api_key)
@@ -33,7 +33,7 @@ Current language: {lang}"""
 @app.route('/api/debug', methods=['GET'])
 def debug():
     """Visit this URL on your Render app to verify the key is loaded."""
-    
+    key = os.environ.get("GEMINI_API_KEY", "")
     masked = (key[:8] + "..." + key[-4:]) if len(key) > 12 else "NOT SET or TOO SHORT"
     return jsonify({
         "key_is_set": bool(key),
