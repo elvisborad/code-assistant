@@ -15,10 +15,10 @@ app = Flask(__name__)
 CORS(app, origins='*')
 
 # ── CONFIG ──
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "YOUR_GEMINI_API_KEY_HERE")
+GEMINI_API_KEY = os.environ.get("Gemini_API_Key", "AIzaSyAK1B_wjrv6ADYFg4GkCFWmI3QNhGaDvoo")
 MODEL = "gemini-3-flash-preview"
 
-client = genai.Client(api_key=GEMINI_API_KEY)
+client = genai.Client(api_key=Gemini_API_Key)
 
 
 def build_system_prompt(lang: str = "python") -> str:
